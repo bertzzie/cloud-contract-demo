@@ -18,8 +18,25 @@
     <artifactId>contract</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>contract</name>
-    <description>API Contract for both Consumer and Producer to work with</description>
+    <name>Contracts</name>
+    <description>Contains all the contracts for Producer and Consumer to work with</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-contract-verifier</artifactId>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
@@ -50,11 +67,10 @@
                 <extensions>true</extensions>
                 <configuration>
                     <!-- By default it would search under src/test/resources/ -->
-                    <contractsDirectory>${project.basedir}/src/main/resources</contractsDirectory>
+                    <contractsDirectory>${project.basedir}</contractsDirectory>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>

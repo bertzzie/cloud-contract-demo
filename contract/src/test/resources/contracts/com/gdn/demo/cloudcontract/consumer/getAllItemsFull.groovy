@@ -1,12 +1,13 @@
 package contracts.com.gdn.demo.cloudcontract.consumer
 
+import org.springframework.cloud.contract.spec.Contract
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 
 /**
  * @author Alex Xandra Albert Sim
  */
-org.springframework.cloud.contract.spec.Contract.make {
+Contract.make {
     request {
         description("""
 Represents getting all list items
@@ -21,7 +22,7 @@ then:
         method 'GET'
         url '/items'
         headers {
-            header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+            header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
         }
     }
 
@@ -30,14 +31,14 @@ then:
         headers {
             header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
         }
-        body {
+        body (
             """
                 {
                     "status": "OK",
                     "data": [
                         {
                             "id": 10,
-                            "content": "test 1243",
+                            "content": "ITEM_CONTENT",
                             "done": false
                         },
                         {
@@ -53,6 +54,6 @@ then:
                     ]
                 }
             """
-        }
+        )
     }
 }
