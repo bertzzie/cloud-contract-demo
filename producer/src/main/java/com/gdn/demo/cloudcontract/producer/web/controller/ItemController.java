@@ -24,7 +24,7 @@ public class ItemController {
   @RequestMapping(
       name = "CreateItem",
       path = "/item",
-      method = RequestMethod.PUT,
+      method = RequestMethod.POST,
       produces = MediaType.APPLICATION_JSON_VALUE,
       consumes = MediaType.APPLICATION_JSON_VALUE
   )

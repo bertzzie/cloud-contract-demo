@@ -19,7 +19,7 @@ when:
 then:
     We'll show them all items we have.
 """)
-        method 'GET'
+        method GET()
         url '/items'
         headers {
             header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)

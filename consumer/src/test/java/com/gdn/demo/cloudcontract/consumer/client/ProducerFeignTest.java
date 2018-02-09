@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Collections;
@@ -28,6 +29,7 @@ import static org.junit.Assert.assertEquals;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class ProducerFeignTest {
 
   @Rule
@@ -131,7 +133,7 @@ public class ProducerFeignTest {
             .build();
 
     stubFor(
-      put(urlPathEqualTo("/item"))
+      post(urlPathEqualTo("/item"))
         .withHeader(HttpHeaders.ACCEPT, equalTo(MediaType.APPLICATION_JSON_VALUE))
         .withHeader(HttpHeaders.CONTENT_TYPE, equalTo(MediaType.APPLICATION_JSON_VALUE))
         .withRequestBody(equalToJson(objectMapper.writeValueAsString(REQUEST)))

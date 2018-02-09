@@ -73,7 +73,7 @@ public class ItemControllerTest {
         .contentType(ContentType.JSON)
         .accept(ContentType.JSON)
         .body(request)
-        .put("/item")
+        .post("/item")
         .then()
         .body(equalTo(toJsonString(response)));
 

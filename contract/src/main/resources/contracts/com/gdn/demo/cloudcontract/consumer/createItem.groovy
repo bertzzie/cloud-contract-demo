@@ -19,7 +19,7 @@ when:
 then:
     We returned the data that's just created
 """)
-        method PUT()
+        method POST()
         url '/item'
         headers {
             header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
