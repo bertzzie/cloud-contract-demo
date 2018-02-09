@@ -43,6 +43,35 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
+				<version>${spring-cloud-contract.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+                    <contractsPath>com.gdn.demo.cloudcontract.consumer</contractsPath>
+                    <basePackageForTests>generated</basePackageForTests>
+                    <baseClassMappings>
+                        <baseClassMapping>
+                            <contractPackageRegex>.*consumer*.</contractPackageRegex>
+                            <baseClassFQN>com.gdn.demo.cloudcontract.producer.CloudContractProducerBase</baseClassFQN>
+                        </baseClassMapping>
+                    </baseClassMappings>
+					<contractDependency>
+						<groupId>com.gdn.demo.cloudcontract</groupId>
+						<artifactId>contract</artifactId>
+					</contractDependency>
+					<contractsWorkOffline>true</contractsWorkOffline>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework.cloud</groupId>
+						<artifactId>spring-cloud-contract-verifier</artifactId>
+						<version>${spring-cloud-contract.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 
